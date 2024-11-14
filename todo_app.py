@@ -1,6 +1,6 @@
+import ttkbootstrap as ttk
 import tkinter as tk
 from tkinter import messagebox
-from tkinter import ttk
 import json
 
 class TodoApp:
@@ -44,11 +44,8 @@ class TodoApp:
 
     def setup_style(self):
         """Sets up styles for ttk widgets, similar to CSS styling."""
-        style = ttk.Style(self.root)
-        style.configure("TButton", font=("Helvetica", 10), padding=5)
-        style.configure("TEntry", font=("Helvetica", 10))
-        style.configure("Custom.TButton", background="#007acc", foreground="Black", font=("Helvetica", 10, "bold"))
-        style.map("Custom.TButton", foreground=[("active", "Black")], background=[("active", "#005f8f")])
+        # No need to create a Style instance here; ttkbootstrap handles it automatically
+        pass
 
     def load_tasks(self):
         try:
@@ -94,6 +91,7 @@ class TodoApp:
             self.dark_theme = True
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    # Use ttkbootstrap's Window to initialize with a theme
+    root = ttk.Window(themename="flatly")  # Corrected to use ttkbootstrap's Window
     app = TodoApp(root)
     root.mainloop()
