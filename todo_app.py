@@ -9,9 +9,6 @@ class TodoApp:
         self.root.title("To-Do List")
         self.tasks = self.load_tasks()
 
-        # Set up style
-        self.setup_style()
-
         # Main entry for tasks
         self.task_input = ttk.Entry(self.root, width=50)
         self.task_input.grid(row=0, column=0, padx=5, pady=5, sticky="ew")
@@ -41,11 +38,26 @@ class TodoApp:
         self.load_tasks_to_listbox()
         
         self.dark_theme = False
+        
+        # Set up style
+        self.setup_style()
 
     def setup_style(self):
         """Sets up styles for ttk widgets, similar to CSS styling."""
-        # No need to create a Style instance here; ttkbootstrap handles it automatically
-        pass
+        # Create a style instance from ttkbootstrap
+        style = ttk.Style()
+
+        # Define a custom button style with larger text
+        style.configure("Custom.TButton", font=("Helvetica", 16))
+
+        # Define a custom entry style with larger text
+        style.configure("Custom.TEntry", font=("Helvetica", 16))
+
+        # Define a larger font for the Listbox
+        self.tasks_listbox.config(font=("Helvetica", 16))
+
+
+
 
     def load_tasks(self):
         try:
